@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Montrack — Tus finanzas, en tu teléfono y de nadie más</title>
+<meta name="description" content="App de finanzas personales para Android. Base de datos cifrada en tu propio teléfono, sin servidores, sin anuncios y sin suscripción." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/estilo.css" />
+</head>
+<body>
+
+<header class="cabecera">
+  <div class="marca">
+    <svg width="26" height="26" viewBox="0 0 64 64" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="#F5F4EE" />
+      <circle cx="27" cy="36" r="13" fill="#C99A2E" />
+      <circle cx="27" cy="36" r="9" fill="none" stroke="#1F4B3F" stroke-width="2" />
+      <text x="27" y="41" text-anchor="middle" font-size="12" font-weight="700" fill="#1F4B3F" font-family="Georgia, serif">$</text>
+      <circle cx="41" cy="25" r="10" fill="none" stroke="#1F4B3F" stroke-width="4" />
+      <line x1="48" y1="32" x2="55" y2="39" stroke="#1F4B3F" stroke-width="4" stroke-linecap="round" />
+    </svg>
+    Montrack
+  </div>
+  <nav>
+    <a href="/">Inicio</a>
+    <a href="/privacy/">Privacidad</a>
+    <a href="/terms/">Términos</a>
+  </nav>
+</header>
+
+<main class="contenido">
+  <h1>Tus finanzas viven en tu teléfono. Y en ningún otro sitio.</h1>
+  <p class="entrada">
+    Montrack lleva la cuenta de lo que entra y lo que sale. Todo se guarda en
+    una base de datos cifrada dentro de tu propio teléfono: no hay servidor
+    al que enviarlo, ni anuncios, ni suscripción.
+  </p>
+
+  <div class="destacado">
+    <p><strong>Lo que la hace distinta:</strong> la mayoría de las apps de
+    finanzas suben tus movimientos a la nube de alguien. Montrack no tiene
+    dónde subirlos. Si respaldas en Google Drive, el archivo va a
+    <em>tu</em> Drive, a una carpeta que solo esta app puede tocar.</p>
+  </div>
+
+  <div class="rejilla">
+    <div class="rasgo">
+      <h3>Cifrada de verdad</h3>
+      <p>SQLCipher con AES-256. La clave se genera al azar en cada
+      instalación y vive en el almacén seguro del sistema, nunca en el código.</p>
+    </div>
+    <div class="rasgo">
+      <h3>Varias cuentas, varias monedas</h3>
+      <p>Una cuenta en pesos y otra en dólares, sin mezclarlas. El resumen
+      convierte con las tasas que pongas tú, no con las de una API.</p>
+    </div>
+    <div class="rasgo">
+      <h3>Categorías tuyas</h3>
+      <p>Crea, renombra y borra las que quieras. Las que vienen de fábrica
+      son solo un punto de partida.</p>
+    </div>
+    <div class="rasgo">
+      <h3>Resumen y gráficos</h3>
+      <p>Ingresos contra gastos, reparto por categoría, y un asesor que
+      compara tus números con la regla del 50/30/20.</p>
+    </div>
+    <div class="rasgo">
+      <h3>Entra y sale en CSV</h3>
+      <p>Exporta todo cuando quieras. Tus datos no se quedan atrapados
+      dentro de la app.</p>
+    </div>
+    <div class="rasgo">
+      <h3>Español e inglés</h3>
+      <p>Se adapta sola al idioma del teléfono. No hay que configurar nada.</p>
+    </div>
+  </div>
+
+  <h2>Descargar</h2>
+  <p>
+    Montrack está en pruebas. El instalador se reparte todavía como archivo
+    APK, fuera de Google Play.
+  </p>
+  <p>
+    <a class="boton" href="https://github.com/lgayc/montrack-web/releases/latest">Descargar el APK</a>
+  </p>
+  <p class="nota-boton">
+    Android avisa al instalar cualquier app que no venga de Google Play. Es
+    el aviso normal para instalaciones fuera de la tienda, no una señal de
+    que algo vaya mal.
+  </p>
+
+  <h2>Preguntas rápidas</h2>
+
+  <h3>¿Se conecta a mi banco?</h3>
+  <p>No. Los movimientos se anotan a mano. Es más trabajo, y a cambio no hay
+  que darle a nadie las credenciales del banco.</p>
+
+  <h3>¿Necesito una cuenta de Google?</h3>
+  <p>No. El botón «Continuar sin cuenta» entra directo. Google solo hace
+  falta si quieres el respaldo automático en Drive.</p>
+
+  <h3>¿Qué pasa si desinstalo la app?</h3>
+  <p>Se borra la base de datos local con ella. Si quieres conservar el
+  historial, exporta a CSV o respalda en Drive antes.</p>
+
+  <h3>¿Y si cambio de teléfono?</h3>
+  <p>Exporta a CSV en el teléfono viejo e impórtalo en el nuevo. El archivo
+  incluye las cuentas y sus monedas, así que se reconstruye todo.</p>
+
+  <footer class="pie">
+    <p>
+      © 2026 Montrack · <a href="/privacy/">Política de privacidad</a> ·
+      <a href="/terms/">Términos de uso</a>
+    </p>
+  </footer>
+</main>
+
+</body>
+</html>

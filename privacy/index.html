@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Política de privacidad — Montrack</title>
+<meta name="description" content="Qué datos maneja Montrack, dónde se guardan y quién puede verlos." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/estilo.css" />
+</head>
+<body>
+
+<header class="cabecera">
+  <div class="marca">Montrack</div>
+  <nav>
+    <a href="/">Inicio</a>
+    <a href="/privacy/">Privacidad</a>
+    <a href="/terms/">Términos</a>
+  </nav>
+</header>
+
+<main class="contenido">
+  <h1>Política de privacidad</h1>
+  <p class="fecha">Última actualización: 24 de agosto de 2026</p>
+
+  <div class="destacado">
+    <p><strong>En una frase:</strong> Montrack no tiene servidores. Tus
+    movimientos se guardan cifrados dentro de tu teléfono y no se envían a
+    quien desarrolla la app ni a terceros. Lo único que sale del teléfono es
+    el respaldo que tú decidas subir a tu propio Google Drive.</p>
+  </div>
+
+  <h2>Quién responde de esto</h2>
+  <p>
+    Montrack la desarrolla Luis Gay (<code>lgayc</code>). Para cualquier duda
+    sobre privacidad: <a href="mailto:privacy@869thesign.com">privacy@869thesign.com</a>.
+  </p>
+
+  <h2>Qué datos maneja la app</h2>
+
+  <div class="envoltorio-tabla">
+  <table>
+    <tr>
+      <th>Dato</th><th>Dónde se guarda</th><th>Quién puede verlo</th>
+    </tr>
+    <tr>
+      <td>Tus ingresos, gastos, categorías, cuentas y notas</td>
+      <td>Base de datos cifrada dentro de tu teléfono</td>
+      <td>Solo tú, en ese teléfono</td>
+    </tr>
+    <tr>
+      <td>Nombre, correo y foto de tu cuenta de Google</td>
+      <td>La misma base cifrada, si inicias sesión</td>
+      <td>Solo tú. No se envían a ningún sitio</td>
+    </tr>
+    <tr>
+      <td>Credenciales de acceso a Google (tokens)</td>
+      <td>La misma base cifrada</td>
+      <td>Solo la app, para hablar con Drive</td>
+    </tr>
+    <tr>
+      <td>Respaldo <code>montrack-backup.csv</code></td>
+      <td>Tu Google Drive, carpeta «Montrack»</td>
+      <td>Solo tú y quien tú decidas</td>
+    </tr>
+  </table>
+  </div>
+
+  <h2>Cómo se protege lo que está en el teléfono</h2>
+  <p>
+    La base de datos se cifra por completo con SQLCipher (AES-256). La clave
+    se genera al azar la primera vez que abres la app, es distinta en cada
+    instalación, y se guarda en el almacén seguro del sistema operativo
+    (Android Keystore). No está escrita en el código de la app, así que
+    tampoco se puede sacar descompilando el instalador.
+  </p>
+
+  <h2>Qué NO hace Montrack</h2>
+  <ul>
+    <li>No envía tus movimientos a ningún servidor. No hay servidor.</li>
+    <li>No lleva analítica, telemetría ni medición de uso.</li>
+    <li>No muestra anuncios ni incluye redes publicitarias.</li>
+    <li>No vende ni comparte datos con terceros.</li>
+    <li>No accede a tus contactos, ubicación, cámara, micrófono ni mensajes.</li>
+    <li>No se conecta a tu banco ni te pide credenciales bancarias.</li>
+  </ul>
+
+  <h2>Inicio de sesión con Google</h2>
+  <p>
+    Es <strong>opcional</strong>. La app funciona entera sin cuenta: el botón
+    «Continuar sin cuenta» entra directo.
+  </p>
+  <p>
+    Si inicias sesión, Google le entrega a la app tu nombre, tu correo y tu
+    foto de perfil. Esos datos se usan solo para mostrarte quién ha entrado y
+    para autorizar el respaldo. Se quedan en el teléfono.
+  </p>
+
+  <h2>Acceso a Google Drive</h2>
+  <p>
+    Montrack pide un único permiso de Drive:
+    <code>https://www.googleapis.com/auth/drive.file</code>.
+  </p>
+  <p>
+    Ese permiso es el más restringido que ofrece Google: la app
+    <strong>solo puede ver y modificar los archivos que ella misma crea</strong>.
+    No puede leer el resto de tu Drive, ni listarlo, ni abrir nada que no
+    haya subido ella. En la práctica, lo único que toca es la carpeta
+    «Montrack» y el archivo de respaldo que hay dentro.
+  </p>
+  <p>
+    El respaldo es un CSV con tus movimientos. Lo guarda en tu propia cuenta
+    de Drive, bajo tu control. Quien desarrolla la app no tiene acceso a él.
+  </p>
+
+  <h2>Cómo retirar el acceso</h2>
+  <p>
+    Desde la app: <em>Ajustes → Cerrar sesión</em>. Eso revoca el permiso en
+    el lado de Google y borra del teléfono los datos de la sesión.
+  </p>
+  <p>
+    También puedes retirarlo desde tu cuenta de Google, en
+    <a href="https://myaccount.google.com/permissions">Aplicaciones de terceros con acceso a la cuenta</a>.
+  </p>
+
+  <h2>Cuánto tiempo se conservan los datos</h2>
+  <p>
+    Los datos locales viven en tu teléfono hasta que los borres o desinstales
+    la app. <strong>Desinstalar borra la base de datos</strong>; si quieres
+    conservar el historial, expórtalo a CSV antes.
+  </p>
+  <p>
+    El respaldo de Drive se queda en tu cuenta hasta que lo borres tú. Se
+    puede eliminar desde el propio Drive como cualquier otro archivo.
+  </p>
+
+  <h2>Menores</h2>
+  <p>
+    Montrack no está dirigida a menores de 13 años y no recoge datos a
+    sabiendas de personas de esa edad. Como toda la información se queda en
+    el teléfono, tampoco hay nada que se envíe fuera en ningún caso.
+  </p>
+
+  <h2>Sobre este sitio web</h2>
+  <p>
+    Esta página está alojada en GitHub Pages y usa tipografías servidas por
+    Google Fonts. Ni GitHub ni Google reciben ningún dato de tus finanzas al
+    visitarla, pero su carga puede implicar la dirección IP desde la que
+    entras, como en cualquier sitio web. Esta página no usa cookies ni
+    analítica.
+  </p>
+
+  <h2>Cambios en esta política</h2>
+  <p>
+    Si cambia, se actualiza la fecha de arriba. Si el cambio afectara a qué
+    datos se recogen o a dónde van, se avisará dentro de la propia app.
+  </p>
+
+  <footer class="pie">
+    <p>© 2026 Montrack · <a href="/">Inicio</a> · <a href="/terms/">Términos de uso</a></p>
+  </footer>
+</main>
+
+</body>
+</html>
