@@ -11,8 +11,8 @@ repositorio privado aparte.
 
 ```
 index.html      Portada: qué es la app, funciones, descarga, preguntas
-privacy/        Política de privacidad
-terms/          Términos de uso
+privacy.html    Política de privacidad
+terms.html      Términos de uso
 estilo.css      Hoja de estilos compartida
 CNAME           app.869thesign.com
 .nojekyll       Evita que GitHub procese el sitio con Jekyll
