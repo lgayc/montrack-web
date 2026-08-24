@@ -1,7 +1,7 @@
 # Sitio web de Montrack
 
 Página informativa de la app Montrack, publicada en
-**https://app.869thesign.com** con GitHub Pages.
+**https://montrack.869thesign.com** con GitHub Pages.
 
 Este repositorio es público únicamente para que GitHub Pages pueda
 servirlo. **El código de la aplicación no está aquí**: vive en un
@@ -14,7 +14,7 @@ index.html      Portada: qué es la app, funciones, descarga, preguntas
 privacy.html    Política de privacidad
 terms.html      Términos de uso
 estilo.css      Hoja de estilos compartida
-CNAME           app.869thesign.com
+CNAME           montrack.869thesign.com
 .nojekyll       Evita que GitHub procese el sitio con Jekyll
 ```
 
@@ -40,8 +40,8 @@ vacía.
 
 ## Configuración del dominio
 
-- **Cloudflare** — registro `CNAME`: `app` → `lgayc.github.io`,
+- **Cloudflare** — registro `CNAME`: `montrack` → `lgayc.github.io`,
   con la nube **gris (DNS only)** hasta que GitHub emita el certificado.
 - **GitHub** — *Settings → Pages*: rama `main`, carpeta `/ (root)`,
-  dominio personalizado `app.869thesign.com`, y *Enforce HTTPS* cuando
+  dominio personalizado `montrack.869thesign.com`, y *Enforce HTTPS* cuando
   la casilla deje de estar en gris.
