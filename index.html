@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es" data-idioma="es">
+<html lang="es" data-idioma="es"
+      data-titulo-en="Montrack — Your money, on your phone and nobody else’s"
+      data-descripcion-en="Personal finance app for Android. An encrypted database on your own phone: no servers, no ads, no subscription.">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,84 +18,11 @@
   html[data-idioma="en"] [lang="es"] { display: none; }
 </style>
 
+<link rel="icon" href="/icono.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="stylesheet" href="/estilo.css" />
 
-<!--
-  El idioma, decidido antes de pintar.
-
-  La app se adapta al idioma del teléfono, y la web tenía que hacer lo
-  mismo: a un enlace compartido llega gente con el teléfono en inglés.
-
-  Va aquí, en línea y antes del <body>, a propósito. Si se decidiera
-  después de cargar la página, se vería el español un instante y luego
-  saltaría al inglés. El mismo motivo por el que la app guarda el tema en
-  localStorage y lo lee de forma síncrona antes del primer dibujo.
--->
-<script>
-(function () {
-  var CLAVE = 'montrack_idioma';
-
-  var TEXTOS = {
-    es: {
-      titulo: 'Montrack — Tus finanzas, en tu teléfono y de nadie más',
-      descripcion: 'App de finanzas personales para Android. Base de datos cifrada en tu propio teléfono, sin servidores, sin anuncios y sin suscripción.'
-    },
-    en: {
-      titulo: 'Montrack — Your money, on your phone and nobody else’s',
-      descripcion: 'Personal finance app for Android. An encrypted database on your own phone: no servers, no ads, no subscription.'
-    }
-  };
-
-  /** Lo que eligió la persona manda; si no eligió, lo que diga el navegador. */
-  function elegido() {
-    try {
-      var guardado = localStorage.getItem(CLAVE);
-      if (guardado === 'es' || guardado === 'en') return guardado;
-    } catch (e) {
-      // En una ventana privada o con el almacenamiento bloqueado esto
-      // lanza. No es motivo para no cargar la página.
-    }
-    var suyo = (navigator.language || 'es').toLowerCase();
-    return suyo.indexOf('es') === 0 ? 'es' : 'en';
-  }
-
-  function poner(idioma, recordar) {
-    var raiz = document.documentElement;
-    raiz.setAttribute('data-idioma', idioma);
-    raiz.setAttribute('lang', idioma);
-
-    document.title = TEXTOS[idioma].titulo;
-    var meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', TEXTOS[idioma].descripcion);
-
-    var botones = document.querySelectorAll('[data-ir]');
-    for (var i = 0; i < botones.length; i++) {
-      var suyo = botones[i].getAttribute('data-ir');
-      botones[i].setAttribute('aria-current', suyo === idioma ? 'true' : 'false');
-    }
-
-    if (recordar) {
-      try { localStorage.setItem(CLAVE, idioma); } catch (e) { /* ídem */ }
-    }
-  }
-
-  poner(elegido(), false);
-
-  // Delegado en el documento: el conmutador está en el <body>, que todavía
-  // no existe cuando esto corre.
-  document.addEventListener('click', function (ev) {
-    var boton = ev.target.closest && ev.target.closest('[data-ir]');
-    if (!boton) return;
-    ev.preventDefault();
-    poner(boton.getAttribute('data-ir'), true);
-  });
-
-  // Y al terminar de cargar, para marcar el botón activo.
-  document.addEventListener('DOMContentLoaded', function () {
-    poner(document.documentElement.getAttribute('data-idioma'), false);
-  });
-})();
-</script>
+<script src="/idioma.js"></script>
 </head>
 <body>
 

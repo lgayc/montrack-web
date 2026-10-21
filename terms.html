@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es"
+      data-titulo-en="Terms of use — Montrack"
+      data-descripcion-en="Conditions of use for the Montrack application.">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,96 +10,210 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+
+<style>
+  html[data-idioma="es"] [lang="en"] { display: none; }
+  html[data-idioma="en"] [lang="es"] { display: none; }
+</style>
+
+<link rel="icon" href="/icono.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="stylesheet" href="/estilo.css" />
+
+<script src="/idioma.js"></script>
 </head>
 <body>
 
 <header class="cabecera">
   <div class="marca">Montrack</div>
   <nav>
-    <a href="/">Inicio</a>
-    <a href="/privacy">Privacidad</a>
-    <a href="/terms">Términos</a>
+    <a href="/" lang="es">Inicio</a>
+    <a href="/" lang="en">Home</a>
+    <a href="/privacy" lang="es">Privacidad</a>
+    <a href="/privacy" lang="en">Privacy</a>
+    <a href="/terms" lang="es">Términos</a>
+    <a href="/terms" lang="en">Terms</a>
+    <span class="idiomas">
+      <button type="button" data-ir="es" lang="en" title="Ver esta página en español">ES</button>
+      <button type="button" data-ir="en" lang="es" title="See this page in English">EN</button>
+    </span>
   </nav>
 </header>
 
 <main class="contenido">
-  <h1>Términos de uso</h1>
-  <p class="fecha">Última actualización: 24 de agosto de 2026</p>
 
-  <h2>Qué es Montrack</h2>
-  <p>
-    Una aplicación para llevar la cuenta de tus ingresos y gastos en tu
-    propio teléfono. Al instalarla y usarla, aceptas estos términos.
-  </p>
+  <!-- ===================== ESPAÑOL ===================== -->
+  <div lang="es">
+    <h1>Términos de uso</h1>
+    <p class="fecha">Última actualización: 21 de octubre de 2026</p>
 
-  <h2>Uso de la aplicación</h2>
-  <p>
-    Puedes usar Montrack para tus finanzas personales, sin coste. Se pide que
-    no la uses para nada ilegal, ni intentes usarla para acceder a datos de
-    otras personas.
-  </p>
+    <h2>Qué es Montrack</h2>
+    <p>
+      Una aplicación para llevar la cuenta de tus ingresos y gastos en tu
+      propio teléfono. Al instalarla y usarla, aceptas estos términos.
+    </p>
 
-  <h2>Tus datos son tuyos</h2>
-  <p>
-    Todo lo que registras se queda en tu teléfono, y el respaldo va a tu
-    propio Google Drive. Quien desarrolla la app no tiene acceso a nada de
-    eso y no puede recuperarlo por ti. Los detalles están en la
-    <a href="/privacy">política de privacidad</a>.
-  </p>
+    <h2>Uso de la aplicación</h2>
+    <p>
+      Puedes usar Montrack para tus finanzas personales, sin coste. Se pide que
+      no la uses para nada ilegal, ni intentes usarla para acceder a datos de
+      otras personas.
+    </p>
 
-  <div class="destacado">
-    <p><strong>Haz copias.</strong> Como no hay servidor, no hay copia de
-    seguridad en la nube salvo la que tú hagas. Si pierdes el teléfono, lo
-    restableces de fábrica o desinstalas la app sin haber exportado, los
-    datos no se pueden recuperar. Exporta a CSV o respalda en Drive de vez
-    en cuando.</p>
+    <h2>Tus datos son tuyos</h2>
+    <p>
+      Todo lo que registras se queda en tu teléfono, y el respaldo va a tu
+      propio Google Drive. Quien desarrolla la app no tiene acceso a nada de
+      eso y no puede recuperarlo por ti. Los detalles están en la
+      <a href="/privacy">política de privacidad</a>.
+    </p>
+
+    <div class="destacado">
+      <p><strong>Haz copias.</strong> Como no hay servidor, no hay copia de
+      seguridad en la nube salvo la que tú hagas. Si pierdes el teléfono, lo
+      restableces de fábrica o desinstalas la app sin haber exportado, los
+      datos no se pueden recuperar. Exporta a CSV o respalda en Drive de vez
+      en cuando.</p>
+    </div>
+
+    <h2>Esto no es asesoramiento financiero</h2>
+    <p>
+      La pantalla «Advisor» hace cuentas con los números que tú has
+      introducido: compara lo que presupuestaste con lo que llevas gastado,
+      mira a qué ritmo vas en el mes y señala las categorías que suben. Son
+      observaciones sobre tus propios datos, no recomendaciones profesionales
+      de inversión, fiscalidad ni planificación financiera. Para decisiones
+      que importen, consulta con alguien cualificado.
+    </p>
+
+    <h2>La app se ofrece «tal cual»</h2>
+    <p>
+      Montrack se entrega sin garantías de ningún tipo. No se garantiza que
+      esté libre de errores ni que funcione sin interrupciones en todos los
+      dispositivos. En la medida en que la ley lo permita, quien la desarrolla
+      no responde por pérdidas de datos ni por daños derivados del uso de la
+      aplicación.
+    </p>
+    <p>
+      Las cifras que muestra dependen de lo que tú introduzcas y, en el caso de
+      la conversión entre monedas, de las tasas que tú configures. Conviene
+      revisarlas antes de tomar decisiones con ellas.
+    </p>
+
+    <h2>Propiedad</h2>
+    <p>
+      El nombre Montrack, su diseño y su código son propiedad de su autor.
+      El código fuente de la aplicación no es público, y su distribución se
+      limita al instalador que se ofrece en esta página. Las bibliotecas de
+      terceros que utiliza conservan sus propias licencias.
+    </p>
+
+    <h2>Cambios</h2>
+    <p>
+      Estos términos pueden actualizarse. La fecha de arriba indica la última
+      versión. Seguir usando la app después de un cambio supone aceptarlo.
+    </p>
+
+    <h2>Idiomas</h2>
+    <p>
+      Estos términos están publicados en español y en inglés. En caso de
+      discrepancia entre las dos versiones, <strong>prevalece la versión en
+      español</strong>.
+    </p>
+
+    <h2>Contacto</h2>
+    <p>
+      <a href="mailto:privacy@869thesign.com">privacy@869thesign.com</a>
+    </p>
   </div>
 
-  <h2>Esto no es asesoramiento financiero</h2>
-  <p>
-    La pantalla «Advisor» muestra cálculos sobre los números que tú has
-    introducido y sugerencias generales basadas en reglas conocidas, como el
-    reparto 50/30/20. Son orientaciones, no recomendaciones profesionales de
-    inversión, fiscalidad ni planificación financiera. Para decisiones que
-    importen, consulta con alguien cualificado.
-  </p>
+  <!-- ===================== ENGLISH ===================== -->
+  <div lang="en">
+    <h1>Terms of use</h1>
+    <p class="fecha">Last updated: 21 October 2026</p>
 
-  <h2>La app se ofrece «tal cual»</h2>
-  <p>
-    Montrack se entrega sin garantías de ningún tipo. No se garantiza que
-    esté libre de errores ni que funcione sin interrupciones en todos los
-    dispositivos. En la medida en que la ley lo permita, quien la desarrolla
-    no responde por pérdidas de datos ni por daños derivados del uso de la
-    aplicación.
-  </p>
-  <p>
-    Las cifras que muestra dependen de lo que tú introduzcas y, en el caso de
-    la conversión entre monedas, de las tasas que tú configures. Conviene
-    revisarlas antes de tomar decisiones con ellas.
-  </p>
+    <h2>What Montrack is</h2>
+    <p>
+      An application for keeping track of your income and expenses on your own
+      phone. By installing and using it, you accept these terms.
+    </p>
 
-  <h2>Propiedad</h2>
-  <p>
-    El nombre Montrack, su diseño y su código son propiedad de su autor.
-    El código fuente de la aplicación no es público, y su distribución se
-    limita al instalador que se ofrece en esta página. Las bibliotecas de
-    terceros que utiliza conservan sus propias licencias.
-  </p>
+    <h2>Using the application</h2>
+    <p>
+      You may use Montrack for your personal finances, at no cost. You are
+      asked not to use it for anything unlawful, nor to attempt to use it to
+      access other people's data.
+    </p>
 
-  <h2>Cambios</h2>
-  <p>
-    Estos términos pueden actualizarse. La fecha de arriba indica la última
-    versión. Seguir usando la app después de un cambio supone aceptarlo.
-  </p>
+    <h2>Your data is yours</h2>
+    <p>
+      Everything you record stays on your phone, and the backup goes to your
+      own Google Drive. The developer has no access to any of it and cannot
+      recover it for you. The details are in the
+      <a href="/privacy">privacy policy</a>.
+    </p>
 
-  <h2>Contacto</h2>
-  <p>
-    <a href="mailto:privacy@869thesign.com">privacy@869thesign.com</a>
-  </p>
+    <div class="destacado">
+      <p><strong>Make copies.</strong> As there is no server, there is no cloud
+      backup other than the one you make yourself. If you lose your phone,
+      factory-reset it, or uninstall the app without having exported, the data
+      cannot be recovered. Export to CSV or back up to Drive from time to
+      time.</p>
+    </div>
+
+    <h2>This is not financial advice</h2>
+    <p>
+      The "Advisor" screen does arithmetic on the numbers you entered: it
+      compares what you budgeted against what you have spent, watches how fast
+      you are going through the month, and points out categories that are
+      climbing. These are observations about your own data, not professional
+      recommendations on investment, tax or financial planning. For decisions
+      that matter, consult someone qualified.
+    </p>
+
+    <h2>The app is provided "as is"</h2>
+    <p>
+      Montrack is provided without warranties of any kind. It is not guaranteed
+      to be free of errors or to run without interruption on every device. To
+      the extent permitted by law, the developer is not liable for data loss or
+      for damages arising from use of the application.
+    </p>
+    <p>
+      The figures it shows depend on what you enter and, for currency
+      conversion, on the rates you configure yourself. It is worth checking
+      them before making decisions based on them.
+    </p>
+
+    <h2>Ownership</h2>
+    <p>
+      The Montrack name, its design and its code are the property of its
+      author. The application's source code is not public, and its distribution
+      is limited to the installer offered on this site. Third-party libraries
+      it uses keep their own licences.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      These terms may be updated. The date above indicates the latest version.
+      Continuing to use the app after a change means accepting it.
+    </p>
+
+    <h2>Languages</h2>
+    <p>
+      These terms are published in Spanish and in English. In case of any
+      discrepancy between the two versions, <strong>the Spanish version
+      prevails</strong>.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      <a href="mailto:privacy@869thesign.com">privacy@869thesign.com</a>
+    </p>
+  </div>
 
   <footer class="pie">
-    <p>© 2026 Montrack · <a href="/">Inicio</a> · <a href="/privacy">Política de privacidad</a></p>
+    <p lang="es">© 2026 Montrack · <a href="/">Inicio</a> · <a href="/privacy">Política de privacidad</a></p>
+    <p lang="en">© 2026 Montrack · <a href="/">Home</a> · <a href="/privacy">Privacy policy</a></p>
   </footer>
 </main>
 

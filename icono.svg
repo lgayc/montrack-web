@@ -1,0 +1,22 @@
+<!--
+  El icono de la pestaña y del atajo en la pantalla de inicio.
+
+  Es la misma marca que el icono de la app (montrack-mobile/assets/
+  icon-source.svg): mismo verde #1F4B3F, misma moneda, misma lupa. La web y
+  la app tienen que reconocerse entre ellas.
+
+  Lo que SÍ cambia respecto al maestro: se quitaron los dos aros tenues del
+  interior de la moneda (opacidad .55 y .35) y se engordaron los trazos. A
+  16 px, que es el tamaño real de una pestaña, esos aros no se ven y solo
+  ensucian; el maestro de 1024 px sí los luce.
+-->
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" rx="220" fill="#1F4B3F" />
+
+  <!-- Moneda -->
+  <circle cx="420" cy="620" r="220" fill="#C99A2E" stroke="#F5F4EE" stroke-width="28" />
+
+  <!-- Lupa -->
+  <circle cx="600" cy="380" r="190" fill="#2A5C4C" stroke="#F5F4EE" stroke-width="56" />
+  <line x1="742" y1="522" x2="868" y2="648" stroke="#F5F4EE" stroke-width="64" stroke-linecap="round" />
+</svg>
