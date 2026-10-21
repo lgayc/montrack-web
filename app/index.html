@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- El idioma real se ajusta automáticamente al arrancar la app,
+     según el idioma del dispositivo (ver src/i18n/index.js). -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<link rel="icon" type="image/svg+xml" href="./icon.svg" />
+
+<!-- PWA. Safari de iOS ignora el manifiesto para el icono de la pantalla
+     de inicio: usa apple-touch-icon, y tiene que ser PNG. -->
+<link rel="manifest" href="./manifest.webmanifest" />
+<link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+<meta name="theme-color" content="#1F4B3F" />
+<meta name="description" content="Tus finanzas personales, en tu propio teléfono." />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Montrack" />
+<!-- black-translucent hace que la app ocupe bajo la barra de estado; el
+     relleno lo pone env(safe-area-inset-top), que ya estaba puesto. -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<title>Montrack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #EAE7DC; overscroll-behavior: none; }
+  /* En la PWA instalada no hay barra del navegador que frene el rebote. */
+  html { height: 100%; }
+  body { min-height: 100%; }
+  * { box-sizing: border-box; }
+  /* En Android, los inputs con fuente menor a 16px provocan zoom automático
+     al enfocarlos, lo que descuadra toda la pantalla. */
+  input, select, textarea { font-size: 16px !important; }
+  .montrack-spinner {
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 2.5px solid #DCE0D6; border-top-color: #1F4B3F;
+    animation: montrack-spin 0.8s linear infinite;
+  }
+  @keyframes montrack-spin { to { transform: rotate(360deg); } }
+</style>
+  <script type="module" crossorigin src="/app/assets/index-6stcFldK.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+</html>
