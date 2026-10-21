@@ -63,6 +63,25 @@ p, li { color: var(--tinta-suave); }
   color: var(--tinta-suave); text-decoration: underline;
 }
 
+/* El idioma. Estas dos reglas están TAMBIÉN en línea dentro del <head> de
+   index.html: si esta hoja tarda en llegar, la página se pintaría con los
+   dos idiomas a la vez. Aquí quedan para las demás páginas. */
+html[data-idioma="es"] [lang="en"] { display: none; }
+html[data-idioma="en"] [lang="es"] { display: none; }
+
+/* El conmutador ES / EN. Cada botón se muestra solo cuando NO es el idioma
+   activo (lleva lang del idioma contrario), así que nunca hay que pintar
+   uno "apagado": se ve únicamente el que lleva a algún sitio. */
+.idiomas { display: inline-flex; gap: 4px; margin-left: 4px; }
+.idiomas button {
+  font-family: var(--cuerpo); font-size: 12.5px; font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--tinta-suave); background: var(--papel-hondo);
+  border: 1px solid var(--borde); border-radius: 6px;
+  padding: 5px 9px; cursor: pointer;
+}
+.idiomas button:hover { color: var(--tinta); border-color: var(--tinta-tenue); }
+
 table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
 th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--borde); vertical-align: top; }
 th { color: var(--tinta); font-weight: 600; }

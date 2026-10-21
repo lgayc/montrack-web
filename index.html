@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-idioma="es">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,7 +8,92 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+
+<!-- Las dos reglas del idioma van aquí dentro, no solo en estilo.css: si la
+     hoja externa tarda, la página se pintaría con los dos idiomas a la vez. -->
+<style>
+  html[data-idioma="es"] [lang="en"] { display: none; }
+  html[data-idioma="en"] [lang="es"] { display: none; }
+</style>
+
 <link rel="stylesheet" href="/estilo.css" />
+
+<!--
+  El idioma, decidido antes de pintar.
+
+  La app se adapta al idioma del teléfono, y la web tenía que hacer lo
+  mismo: a un enlace compartido llega gente con el teléfono en inglés.
+
+  Va aquí, en línea y antes del <body>, a propósito. Si se decidiera
+  después de cargar la página, se vería el español un instante y luego
+  saltaría al inglés. El mismo motivo por el que la app guarda el tema en
+  localStorage y lo lee de forma síncrona antes del primer dibujo.
+-->
+<script>
+(function () {
+  var CLAVE = 'montrack_idioma';
+
+  var TEXTOS = {
+    es: {
+      titulo: 'Montrack — Tus finanzas, en tu teléfono y de nadie más',
+      descripcion: 'App de finanzas personales para Android. Base de datos cifrada en tu propio teléfono, sin servidores, sin anuncios y sin suscripción.'
+    },
+    en: {
+      titulo: 'Montrack — Your money, on your phone and nobody else’s',
+      descripcion: 'Personal finance app for Android. An encrypted database on your own phone: no servers, no ads, no subscription.'
+    }
+  };
+
+  /** Lo que eligió la persona manda; si no eligió, lo que diga el navegador. */
+  function elegido() {
+    try {
+      var guardado = localStorage.getItem(CLAVE);
+      if (guardado === 'es' || guardado === 'en') return guardado;
+    } catch (e) {
+      // En una ventana privada o con el almacenamiento bloqueado esto
+      // lanza. No es motivo para no cargar la página.
+    }
+    var suyo = (navigator.language || 'es').toLowerCase();
+    return suyo.indexOf('es') === 0 ? 'es' : 'en';
+  }
+
+  function poner(idioma, recordar) {
+    var raiz = document.documentElement;
+    raiz.setAttribute('data-idioma', idioma);
+    raiz.setAttribute('lang', idioma);
+
+    document.title = TEXTOS[idioma].titulo;
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute('content', TEXTOS[idioma].descripcion);
+
+    var botones = document.querySelectorAll('[data-ir]');
+    for (var i = 0; i < botones.length; i++) {
+      var suyo = botones[i].getAttribute('data-ir');
+      botones[i].setAttribute('aria-current', suyo === idioma ? 'true' : 'false');
+    }
+
+    if (recordar) {
+      try { localStorage.setItem(CLAVE, idioma); } catch (e) { /* ídem */ }
+    }
+  }
+
+  poner(elegido(), false);
+
+  // Delegado en el documento: el conmutador está en el <body>, que todavía
+  // no existe cuando esto corre.
+  document.addEventListener('click', function (ev) {
+    var boton = ev.target.closest && ev.target.closest('[data-ir]');
+    if (!boton) return;
+    ev.preventDefault();
+    poner(boton.getAttribute('data-ir'), true);
+  });
+
+  // Y al terminar de cargar, para marcar el botón activo.
+  document.addEventListener('DOMContentLoaded', function () {
+    poner(document.documentElement.getAttribute('data-idioma'), false);
+  });
+})();
+</script>
 </head>
 <body>
 
@@ -25,97 +110,202 @@
     Montrack
   </div>
   <nav>
-    <a href="/">Inicio</a>
-    <a href="/privacy">Privacidad</a>
-    <a href="/terms">Términos</a>
+    <a href="/" lang="es">Inicio</a>
+    <a href="/" lang="en">Home</a>
+    <a href="/privacy" lang="es">Privacidad</a>
+    <a href="/privacy" lang="en">Privacy</a>
+    <a href="/terms" lang="es">Términos</a>
+    <a href="/terms" lang="en">Terms</a>
+    <span class="idiomas">
+      <button type="button" data-ir="es" lang="en" title="Ver esta página en español">ES</button>
+      <button type="button" data-ir="en" lang="es" title="See this page in English">EN</button>
+    </span>
   </nav>
 </header>
 
 <main class="contenido">
-  <h1>Tus finanzas viven en tu teléfono. Y en ningún otro sitio.</h1>
-  <p class="entrada">
-    Montrack lleva la cuenta de lo que entra y lo que sale. Todo se guarda en
-    una base de datos cifrada dentro de tu propio teléfono: no hay servidor
-    al que enviarlo, ni anuncios, ni suscripción.
-  </p>
 
-  <div class="destacado">
-    <p><strong>Lo que la hace distinta:</strong> la mayoría de las apps de
-    finanzas suben tus movimientos a la nube de alguien. Montrack no tiene
-    dónde subirlos. Si respaldas en Google Drive, el archivo va a
-    <em>tu</em> Drive, a una carpeta que solo esta app puede tocar.</p>
+  <!-- ===================== ESPAÑOL ===================== -->
+  <div lang="es">
+    <h1>Tus finanzas viven en tu teléfono. Y en ningún otro sitio.</h1>
+    <p class="entrada">
+      Montrack lleva la cuenta de lo que entra y lo que sale. Todo se guarda en
+      una base de datos cifrada dentro de tu propio teléfono: no hay servidor
+      al que enviarlo, ni anuncios, ni suscripción.
+    </p>
+
+    <div class="destacado">
+      <p><strong>Lo que la hace distinta:</strong> la mayoría de las apps de
+      finanzas suben tus movimientos a la nube de alguien. Montrack no tiene
+      dónde subirlos. Si respaldas en Google Drive, el archivo va a
+      <em>tu</em> Drive, a una carpeta que solo esta app puede tocar.</p>
+    </div>
+
+    <div class="rejilla">
+      <div class="rasgo">
+        <h3>Cifrada de verdad</h3>
+        <p>SQLCipher con AES-256. La clave se genera al azar en cada
+        instalación y vive en el almacén seguro del sistema, nunca en el código.</p>
+      </div>
+      <div class="rasgo">
+        <h3>Varias cuentas, varias monedas</h3>
+        <p>Una cuenta en pesos y otra en dólares, sin mezclarlas. El resumen
+        convierte con las tasas que pongas tú, no con las de una API.</p>
+      </div>
+      <div class="rasgo">
+        <h3>Categorías tuyas</h3>
+        <p>Crea, renombra y borra las que quieras. Las que vienen de fábrica
+        son solo un punto de partida.</p>
+      </div>
+      <div class="rasgo">
+        <h3>Un asesor que lee tus números</h3>
+        <p>Compara lo presupuestado con lo gastado, mira a qué ritmo vas en el
+        mes y te dice qué categorías se te están subiendo. Sin puntuaciones
+        inventadas: si no hay meses suficientes, lo dice.</p>
+      </div>
+      <div class="rasgo">
+        <h3>Entra y sale en CSV</h3>
+        <p>Exporta todo cuando quieras. Tus datos no se quedan atrapados
+        dentro de la app.</p>
+      </div>
+      <div class="rasgo">
+        <h3>Español e inglés</h3>
+        <p>Se adapta sola al idioma del teléfono. No hay que configurar nada.</p>
+      </div>
+    </div>
+
+    <h2>Descargar</h2>
+    <p>
+      Montrack está en pruebas. El instalador se reparte todavía como archivo
+      APK, fuera de Google Play.
+    </p>
   </div>
 
-  <div class="rejilla">
-    <div class="rasgo">
-      <h3>Cifrada de verdad</h3>
-      <p>SQLCipher con AES-256. La clave se genera al azar en cada
-      instalación y vive en el almacén seguro del sistema, nunca en el código.</p>
+  <!-- ===================== ENGLISH ===================== -->
+  <div lang="en">
+    <h1>Your money lives on your phone. Nowhere else.</h1>
+    <p class="entrada">
+      Montrack keeps track of what comes in and what goes out. Everything is
+      stored in an encrypted database on your own phone: there is no server to
+      send it to, no ads, and no subscription.
+    </p>
+
+    <div class="destacado">
+      <p><strong>What makes it different:</strong> most finance apps upload
+      your transactions to somebody's cloud. Montrack has nowhere to upload
+      them. If you back up to Google Drive, the file goes to <em>your</em>
+      Drive, in a folder only this app can touch.</p>
     </div>
-    <div class="rasgo">
-      <h3>Varias cuentas, varias monedas</h3>
-      <p>Una cuenta en pesos y otra en dólares, sin mezclarlas. El resumen
-      convierte con las tasas que pongas tú, no con las de una API.</p>
+
+    <div class="rejilla">
+      <div class="rasgo">
+        <h3>Actually encrypted</h3>
+        <p>SQLCipher with AES-256. The key is generated at random on each
+        install and lives in the system keystore, never in the code.</p>
+      </div>
+      <div class="rasgo">
+        <h3>Several accounts, several currencies</h3>
+        <p>One account in pesos and another in dollars, kept apart. The summary
+        converts using the rates you set yourself, not an API's.</p>
+      </div>
+      <div class="rasgo">
+        <h3>Your own categories</h3>
+        <p>Create, rename and delete whichever you like. The ones that ship
+        with the app are only a starting point.</p>
+      </div>
+      <div class="rasgo">
+        <h3>An advisor that reads your numbers</h3>
+        <p>It compares what you budgeted against what you spent, watches how
+        fast you are going through the month, and tells you which categories
+        are creeping up. No made-up scores: if there aren't enough months of
+        data, it says so.</p>
+      </div>
+      <div class="rasgo">
+        <h3>CSV in and out</h3>
+        <p>Export everything whenever you want. Your data doesn't get trapped
+        inside the app.</p>
+      </div>
+      <div class="rasgo">
+        <h3>Spanish and English</h3>
+        <p>It follows your phone's language on its own. Nothing to set up.</p>
+      </div>
     </div>
-    <div class="rasgo">
-      <h3>Categorías tuyas</h3>
-      <p>Crea, renombra y borra las que quieras. Las que vienen de fábrica
-      son solo un punto de partida.</p>
-    </div>
-    <div class="rasgo">
-      <h3>Resumen y gráficos</h3>
-      <p>Ingresos contra gastos, reparto por categoría, y un asesor que
-      compara tus números con la regla del 50/30/20.</p>
-    </div>
-    <div class="rasgo">
-      <h3>Entra y sale en CSV</h3>
-      <p>Exporta todo cuando quieras. Tus datos no se quedan atrapados
-      dentro de la app.</p>
-    </div>
-    <div class="rasgo">
-      <h3>Español e inglés</h3>
-      <p>Se adapta sola al idioma del teléfono. No hay que configurar nada.</p>
-    </div>
+
+    <h2>Download</h2>
+    <p>
+      Montrack is still in testing. The installer is distributed as an APK
+      file, outside Google Play.
+    </p>
   </div>
 
-  <h2>Descargar</h2>
+  <!-- Los enlaces de descarga son los mismos en los dos idiomas: un solo
+       sitio que cambiar cuando cambie el adjunto de la release. -->
   <p>
-    Montrack está en pruebas. El instalador se reparte todavía como archivo
-    APK, fuera de Google Play.
-  </p>
-  <p>
-    <a class="boton" href="https://github.com/lgayc/montrack-web/releases/latest/download/montrack-1.0.57.apk">Descargar el APK</a>
+    <a class="boton" href="https://github.com/lgayc/montrack-web/releases/latest/download/montrack-1.0.57.apk" lang="es">Descargar el APK</a>
+    <a class="boton" href="https://github.com/lgayc/montrack-web/releases/latest/download/montrack-1.0.57.apk" lang="en">Download the APK</a>
     <br>
-    <a class="enlace-menor" href="https://github.com/lgayc/montrack-web/releases/latest">Ver qué cambió en esta versión</a>
+    <a class="enlace-menor" href="https://github.com/lgayc/montrack-web/releases/latest" lang="es">Ver qué cambió en esta versión</a>
+    <a class="enlace-menor" href="https://github.com/lgayc/montrack-web/releases/latest" lang="en">See what changed in this version</a>
   </p>
-  <p class="nota-boton">
+  <p class="nota-boton" lang="es">
     Android avisa al instalar cualquier app que no venga de Google Play. Es
     el aviso normal para instalaciones fuera de la tienda, no una señal de
     que algo vaya mal.
   </p>
+  <p class="nota-boton" lang="en">
+    Android warns you when installing any app that didn't come from Google
+    Play. That's the normal warning for installs from outside the store, not
+    a sign that something is wrong.
+  </p>
 
-  <h2>Preguntas rápidas</h2>
+  <div lang="es">
+    <h2>Preguntas rápidas</h2>
 
-  <h3>¿Se conecta a mi banco?</h3>
-  <p>No. Los movimientos se anotan a mano. Es más trabajo, y a cambio no hay
-  que darle a nadie las credenciales del banco.</p>
+    <h3>¿Se conecta a mi banco?</h3>
+    <p>No. Los movimientos se anotan a mano. Es más trabajo, y a cambio no hay
+    que darle a nadie las credenciales del banco.</p>
 
-  <h3>¿Necesito una cuenta de Google?</h3>
-  <p>No. El botón «Continuar sin cuenta» entra directo. Google solo hace
-  falta si quieres el respaldo automático en Drive.</p>
+    <h3>¿Necesito una cuenta de Google?</h3>
+    <p>No. El botón «Continuar sin cuenta» entra directo. Google solo hace
+    falta si quieres el respaldo automático en Drive.</p>
 
-  <h3>¿Qué pasa si desinstalo la app?</h3>
-  <p>Se borra la base de datos local con ella. Si quieres conservar el
-  historial, exporta a CSV o respalda en Drive antes.</p>
+    <h3>¿Qué pasa si desinstalo la app?</h3>
+    <p>Se borra la base de datos local con ella. Si quieres conservar el
+    historial, exporta a CSV o respalda en Drive antes.</p>
 
-  <h3>¿Y si cambio de teléfono?</h3>
-  <p>Exporta a CSV en el teléfono viejo e impórtalo en el nuevo. El archivo
-  incluye las cuentas y sus monedas, así que se reconstruye todo.</p>
+    <h3>¿Y si cambio de teléfono?</h3>
+    <p>Exporta a CSV en el teléfono viejo e impórtalo en el nuevo. El archivo
+    incluye las cuentas y sus monedas, así que se reconstruye todo.</p>
+  </div>
+
+  <div lang="en">
+    <h2>Quick questions</h2>
+
+    <h3>Does it connect to my bank?</h3>
+    <p>No. Transactions are entered by hand. It's more work, and in exchange
+    you never hand anyone your bank credentials.</p>
+
+    <h3>Do I need a Google account?</h3>
+    <p>No. The "Continue without an account" button takes you straight in.
+    Google is only needed if you want automatic backup to Drive.</p>
+
+    <h3>What happens if I uninstall the app?</h3>
+    <p>The local database goes with it. If you want to keep your history,
+    export to CSV or back up to Drive first.</p>
+
+    <h3>What if I change phones?</h3>
+    <p>Export to CSV on the old phone and import it on the new one. The file
+    includes your accounts and their currencies, so everything is rebuilt.</p>
+  </div>
 
   <footer class="pie">
-    <p>
+    <p lang="es">
       © 2026 Montrack · <a href="/privacy">Política de privacidad</a> ·
       <a href="/terms">Términos de uso</a>
+    </p>
+    <p lang="en">
+      © 2026 Montrack · <a href="/privacy">Privacy policy</a> ·
+      <a href="/terms">Terms of use</a>
     </p>
   </footer>
 </main>
