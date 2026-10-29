@@ -1,5 +1,5 @@
 {
-  "version": "1.0.62",
+  "version": "1.0.64",
   "url": "https://github.com/lgayc/montrack-web/releases/latest/download/montrack.apk",
-  "notas": "Importa el extracto de tu banco, apunta el dinero que esperas cobrar, y tu saldo ya cuadra con el banco."
+  "notas": "Arregla el respaldo de Drive, que perdía las transferencias, y ya se puede restaurar desde la propia app."
 }
