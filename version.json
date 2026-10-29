@@ -1,5 +1,5 @@
 {
-  "version": "1.0.57",
+  "version": "1.0.62",
   "url": "https://github.com/lgayc/montrack-web/releases/latest/download/montrack.apk",
-  "notas": "Interfaz nueva con modo oscuro, Advisor que analiza tus datos, transferencias entre cuentas y categorías rehechas."
+  "notas": "Importa el extracto de tu banco, apunta el dinero que esperas cobrar, y tu saldo ya cuadra con el banco."
 }
